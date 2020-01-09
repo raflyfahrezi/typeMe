@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <link rel="shortcut icon" type="image/png" href="./assets/writer.png"/>
+        <title>Type Me</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" href="./assets/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="welcome">
+            <div class="welcome__title">
+                <label class="welcome__title--modifier">Type Me</label><label class="welcome__title--modifier blink">_</label>
+            </div>
+            <div class="welcome__start">
+                <button class="welcome__start--modifier" onclick="firstButton()">Start</button>
+            </div>
+            <div class="welcome__developer">
+                <p class="welcome__developer--modifier">Developer by Farhan Rafly Fahrezi</p>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box__title">
+                <p class="box__title--modifier">Write the Code Below</p>
+            </div>
+            <div class="box__text">
+                <p class="textToType" id="textToType"></p>
+            </div>
+            <div class="box__input">
+                <input type="text" class="typeHere" id="typeHere">
+            </div>
+        </div>
+        <div class="timer">
+            <p class="timer--modifier" id="timer"></p>
+        </div>
+
+        <div class="finish">
+            <div class="finish__title">
+                <p class="welcome__title--modifier finish__title--modifier">Well Done</p>
+            </div>
+            <div class="finish__time">
+                <p id="timeResult"></p>
+            </div>
+        </div>
+        <div class="nextStage">
+            <button onclick="nextStage()" class="nextStage--modifier">Next Stage</button>
+        </div>
+    </body>
+    <script src="./assets/script.js"></script>
+</html>
