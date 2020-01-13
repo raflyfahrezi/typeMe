@@ -4,6 +4,8 @@ const text3 = "During the next five years, I started a company named Micro Servi
 var splittedText
 var pointer = 0
 var reminder = 1
+var globalMinutes = 0
+var globalSeconds = 0
 var interval
 var stopBlink
 var stopBlink2
@@ -87,6 +89,8 @@ const startTimer = () => {
             second = 0
         }
         document.getElementById('timer').innerText = minute + ' minutes   ' + second + ' seconds'
+        globalMinutes = minute
+        globalSeconds = second
     }, 1000);
 }
 
@@ -120,7 +124,22 @@ const moveHelper = (params) => {
     let textTemporary = getText()
     textTemporary = textTemporary.replace(`${splittedText[params]}` + ` `, `${splittedText[params].bold()}` + ` `)
     setText(textTemporary)
-    console.log(textTemporary)
+}
+
+const countWPM = (paramsMinutes, paramsSeconds) => {
+    let minutes = paramsMinutes
+    let seconds = paramsSeconds
+    let countText = text.replace(/\s+/g, '').length
+
+    minutes += (seconds / 60)  
+    countText = '' + ((countText / 5)/ minutes)
+    countText = countText.substr(0, 2)
+
+    return countText + ' Word Per Minute (WPM)'
+}
+
+const setWPM = () => {
+    document.getElementById('wpmResult').innerText = countWPM(globalMinutes, globalSeconds)
 }
 
 blinkEffects()
@@ -130,7 +149,6 @@ $('.typeHere').on('input', function (evt) {
 
     if (value === splittedText[pointer]) {
         document.getElementById('typeHere').value = ""
-        console.log(pointer + ' ' + splittedText[pointer])
         moveHelper(pointer)
         pointer = pointer + 1
         if (pointer == splittedText.length-1) {
@@ -139,9 +157,11 @@ $('.typeHere').on('input', function (evt) {
             reminder += 1
             setTimeout(() => {
                 if (reminder === 4) {
-                end()
+                    setWPM()
+                    end()
                 } else {
-                showFinalResult()   
+                    setWPM()
+                    showFinalResult()   
                 }
             }, 500);
         }

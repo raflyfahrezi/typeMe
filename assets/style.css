@@ -168,6 +168,14 @@ body{
     font-size: 30px;
 }
 
+.finish__wpm{
+    text-align: center;
+    margin-top: 50px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+
 .nextStage{
     width: 100%;
     height: auto;
